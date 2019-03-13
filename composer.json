@@ -1,0 +1,28 @@
+{
+    "name": "radcampaign/wepay",
+    "description": "WePay driver for the Omnipay v3 payment processing library",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joshua Diamond",
+            "email": "joshua@radcampaign.com"
+        }
+    ],
+    "prefer-stable": true,
+    "require": {
+        "omnipay/common": "^3.0"
+    },
+    "autoload": {
+        "psr-4": { "Omnipay\\WePay\\" : "src/" }
+    },
+    "require-dev": {
+        "omnipay/tests": "^3.1",
+        "psy/psysh": "^0.9.9",
+        "vlucas/phpdotenv": "^3.3"
+    },
+    "scripts": {
+        "run-tests": "phpunit",
+        "cli": "psysh"
+    }
+}

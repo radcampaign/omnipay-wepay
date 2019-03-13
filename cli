@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [ -f ./vendor/bin/psysh ]; then
+  ./vendor/bin/psysh
+else
+  echo "Psysh not available"
+fi
