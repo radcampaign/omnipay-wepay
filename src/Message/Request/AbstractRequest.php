@@ -4,36 +4,18 @@
  */
 namespace Omnipay\WePay\Message\Request;
 
-use Omnipay\Common\Message\AbstractRequest as BaseAbstract;
+use Omnipay\Common\Message\AbstractRequest as OmnipayAbstractRequest;
 use WePay;
 use WePayException;
 use WePayRequestException;
-use Omnipay\WePay\Message\Response\GenericResponse;
+use Omnipay\WePay\Message\Response\Generic;
+use Omnipay\WePay\Requests\Router;
+use Omnipay\Common\Exception\InvalidRequestException;
+use Omnipay\Common\Exception\RuntimeException;
+use Omnipay\Common\Helper;
 
-abstract class AbstractRequest extends BaseAbstract
+abstract class AbstractRequest extends OmnipayAbstractRequest
 {
-    /**
-     * The live api url
-     * @var string
-     */
-    protected $live_api_url = 'https://wepayapi.com/v2/';
-
-    /**
-     * The staging api url
-     * @var string
-     */
-    protected $staging_api_url = 'https://stage.wepayapi.com/v2/';
-
-    /**
-     * Retrieves the api url - test mode uses the staging url
-     * and live uses the live url
-     * @return string
-     */
-    public function getApiUrl()
-    {
-        return $this->getTestMode() ? $this->staging_api_url : $this->live_api_url;
-    }
-
     /**
      * gets the endpoint for the request
      * @return string
@@ -45,23 +27,6 @@ abstract class AbstractRequest extends BaseAbstract
      */
     abstract public function getData();
 
-    /**
-     * We want the endpoint to be just a path.
-     * i.e. - "/user" or "user".
-     * We wll add the full path to the url.
-     * @return string
-     */
-    public function buildEndpoint()
-    {
-        $endpoint = $this->getEndpoint();
-        // remove webpoints that begin with
-        if (substr($endpoint, 0, 1) === '/') {
-            $endpoint = substr($endpoint,1);
-        }
-
-        return $this->getApiUrl() . $endpoint;
-    }
-
     public function getHttpMethod()
     {
         if (property_exists($this, 'http_method')) {
@@ -71,19 +36,32 @@ abstract class AbstractRequest extends BaseAbstract
         return 'POST';
     }
 
+    public function buildEndpoint()
+    {
+        return Router::getEndpoint($this->getEndpoint());
+    }
+
     /**
      * {@inheritdoc}
      */
-    public function sendData($data)
+    public function sendData($data = null)
     {
         $headers = $this->getApiHeaders();
-        $body = $data ? http_build_query($data, '', '&') : null;
+        $httpMethod = strtoupper($this->getHttpMethod());
+        switch ($httpMethod) {
+            case 'POST':
+                $data = json_encode(is_null($data) ? [] : $data);
+                break;
+            case 'GET':
+                $data = $data ? http_build_query($data, '', '&') : null;
+                break;
+        }
 
         $httpResponse = $this->httpClient->request(
-            $this->getHttpMethod(),
+            $httpMethod,
             $this->buildEndpoint(),
             $headers,
-            $body
+            $data
         );
 
         return $this->createResponse(
@@ -124,6 +102,6 @@ abstract class AbstractRequest extends BaseAbstract
 
     protected function createResponse($data, $headers = [])
     {
-        return $this->response = new GenericResponse($this, $data, $headers);
+        return $this->response = new Generic($this, $data, $headers);
     }
 }

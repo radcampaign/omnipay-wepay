@@ -1,5 +1,5 @@
 {
-    "name": "radcampaign/wepay",
+    "name": "radcampaign/omnipay-wepay",
     "description": "WePay driver for the Omnipay v3 payment processing library",
     "type": "library",
     "license": "MIT",
@@ -9,6 +9,7 @@
             "email": "joshua@radcampaign.com"
         }
     ],
+    "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
         "omnipay/common": "^3.0"
@@ -24,5 +25,11 @@
     "scripts": {
         "run-tests": "phpunit",
         "cli": "psysh"
-    }
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../omnipay-common"
+        }
+    ]
 }

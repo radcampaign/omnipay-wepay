@@ -14,8 +14,8 @@ if (is_file($testingEnv)) {
     $dotenv->load();
 }
 
-function testGateway() {
-    $gateway = Omnipay\Omnipay::create('WePay');
+function testUserGateway() {
+    $gateway = Omnipay\Omnipay::user('WePay');
 
     $access_token = getEnv('ACCESS_TOKEN');
     $client_id = getEnv('CLIENT_ID');

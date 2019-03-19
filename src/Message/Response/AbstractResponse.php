@@ -30,6 +30,11 @@ abstract class AbstractResponse extends BaseAbstract
 
     public function isSuccessful()
     {
+        $respData = $this->getData();
+        if (isset($respData['error'])) {
+            return false;
+        }
+
         return true;
     }
 }
