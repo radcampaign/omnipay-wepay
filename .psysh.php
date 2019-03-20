@@ -33,3 +33,8 @@ function testUserGateway() {
 
     return $gateway;
 }
+
+$localFile = getcwd() . '/.psysh-local.php';
+if (is_file($localFile)) {
+    include_once $localFile;
+}
