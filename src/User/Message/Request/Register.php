@@ -4,6 +4,7 @@ namespace Omnipay\WePay\User\Message\Request;
 
 use Omnipay\WePay\Message\Request\AbstractRequest;
 use Omnipay\WePay\Utilities\LazyLoadParametersTrait;
+use Omnipay\WePay\User\Message\Response\RegisterResponse;
 
 class Register extends AbstractRequest
 {
@@ -49,5 +50,10 @@ class Register extends AbstractRequest
         $resp = parent::send();
 
         return $resp;
+    }
+
+    protected function createResponse($data, $headers = [], $code, $status_reason = '')
+    {
+        return $this->response = new RegisterResponse($this, $data, $headers, $code, $status_reason);
     }
 }

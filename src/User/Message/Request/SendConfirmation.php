@@ -4,6 +4,7 @@ namespace Omnipay\WePay\User\Message\Request;
 
 use Omnipay\WePay\Message\Request\AbstractRequest;
 use Omnipay\WePay\Utilities\LazyLoadParametersTrait;
+use Omnipay\WePay\User\Message\Response\SendConfirmationResponse;
 
 class SendConfirmation extends AbstractRequest
 {
@@ -43,5 +44,10 @@ class SendConfirmation extends AbstractRequest
     public function getEndpoint()
     {
         return 'user/send_confirmation';
+    }
+
+    protected function createResponse($data, $headers = [], $code, $status_reason = '')
+    {
+        return $this->response = new SendConfirmationResponse($this, $data, $headers, $code, $status_reason);
     }
 }

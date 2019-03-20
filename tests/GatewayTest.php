@@ -4,15 +4,11 @@
  */
 namespace Omnipay\WePay;
 
-include_once 'UsesEnvironmentVariablesTrait.php';
-
 use Omnipay\Tests\GatewayTestCase;
 use Omnipay\WePay\Requests\Router;
 
 class GatewayTest extends GatewayTestCase
 {
-    use UsesEnvironmentVariablesTrait;
-
     public function setUp()
     {
         parent::setUp();

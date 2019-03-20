@@ -10,12 +10,15 @@ use WePayException;
 use WePayRequestException;
 use Omnipay\WePay\Message\Response\Generic;
 use Omnipay\WePay\Requests\Router;
+use Omnipay\WePay\RouterHooksTestModeTrait;
 use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Common\Exception\RuntimeException;
 use Omnipay\Common\Helper;
 
 abstract class AbstractRequest extends OmnipayAbstractRequest
 {
+    use RouterHooksTestModeTrait;
+
     /**
      * gets the endpoint for the request
      * @return string
@@ -66,7 +69,9 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
 
         return $this->createResponse(
             $httpResponse->getBody()->getContents(),
-            $httpResponse->getHeaders()
+            $httpResponse->getHeaders(),
+            $httpResponse->getStatusCode(),
+            $httpResponse->getReasonPhrase()
         );
     }
 
@@ -100,8 +105,8 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
         ];
     }
 
-    protected function createResponse($data, $headers = [])
+    protected function createResponse($data, $headers = [], $code, $status_reason = '')
     {
-        return $this->response = new Generic($this, $data, $headers);
+        return $this->response = new Generic($this, $data, $headers, $code, $status_reason);
     }
 }

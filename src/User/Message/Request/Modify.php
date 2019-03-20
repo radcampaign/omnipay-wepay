@@ -3,6 +3,7 @@
 namespace Omnipay\WePay\User\Message\Request;
 
 use Omnipay\WePay\Message\Request\AbstractRequest;
+use Omnipay\WePay\User\Message\Response\ModifyResponse;
 
 class Modify extends AbstractRequest
 {
@@ -33,5 +34,10 @@ class Modify extends AbstractRequest
     public function setCallbackUri($value)
     {
         return $this->setParameter('callback_uri', $value);
+    }
+
+    protected function createResponse($data, $headers = [], $code, $status_reason = '')
+    {
+        return $this->response = new ModifyResponse($this, $data, $headers, $code, $status_reason);
     }
 }

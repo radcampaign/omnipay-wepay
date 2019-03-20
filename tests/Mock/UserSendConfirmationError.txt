@@ -1,0 +1,17 @@
+HTTP/1.1 400 Bad Request
+Server: nginx
+Date: Sun, 05 May 2013 08:51:15 GMT
+Content-Type: application/json;charset=utf-8
+Content-Length: 997
+Connection: keep-alive
+Cache-Control: no-cache, no-store
+Access-Control-Max-Age: 300
+Access-Control-Allow-Credentials: true
+
+{
+     "error": "invalid_request",
+     "error_description": "This access_token is already approved.",
+     "error_code": 7002,
+     "details": [],
+     "documentation_url": "https://developer.wepay.com/api/general/errors#7002"
+}
