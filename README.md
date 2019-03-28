@@ -27,7 +27,7 @@ $gateway = Omnipay\Omnipay::user('WePay');
 
 ## Testing
 
-After install the package, simply run `composer run-tests` or call `./vendor/bin/phpunit` from the project directory. This project requires the radcampaign/omnipay-tests fork of omnipay/omnipay-tests.
+After install the package, simply run `composer test` or call `./vendor/bin/phpunit` from the project directory. This project requires the [radcampaign/omnipay-tests](https://github.com/radcampaign/omnipay-tests) fork of [omnipay/omnipay-tests](https://github.com/thephpleague/omnipay-tests).
 
 ## Developing
 
