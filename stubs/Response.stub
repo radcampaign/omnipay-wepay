@@ -1,0 +1,19 @@
+/**
+ * Request response
+ */
+namespace Omnipay\WePay\#{GATEWAY}Message\Response;
+
+use Omnipay\WePay\Message\Response\AbstractResponse;
+
+class #{RESPONSE} extends AbstractResponse
+{
+    /**
+     * Defines success for the request
+     * @return {Boolean}
+     */
+    public function isSucessful()
+    {
+        // input your own success rules here
+        return parent::isSuccessful();
+    }
+}

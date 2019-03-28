@@ -1,0 +1,36 @@
+/**
+ * Creates fake data that can be used to test
+ * parts of our application.
+ *
+ * @see https://github.com/fzaninotto/Faker
+ */
+namespace Omnipay\WePay\Fakers;
+
+/**
+ * Our #{FAKER} class.
+ *
+ * Example:
+ *
+ * <code>
+ *     $faker = Omnipay\WePay\Factories\FakerFactory::create('#{FAKER}');
+ *     $data = $faker->fake(); // returns fake data
+ * </code>
+ */
+class #{FAKER} extends AbstractFaker
+{
+    /**
+     * {@inheritdoc}
+     */
+    public function fake()
+    {
+        // retrieves our Faker\Generator
+        $faker = $this->generator();
+
+        $array = [
+            // fill with data. example:
+            // 'name' => $faker->name(),
+        ];
+
+        return $array;
+    }
+}

@@ -80,6 +80,16 @@ abstract class AbstractResponse extends BaseAbstract
         return $this->headers;
     }
 
+    /**
+     * Checks to see if the response data is empty
+     *
+     * @return boolean
+     */
+    public function dataIsEmpty()
+    {
+        return empty($this->getData());
+    }
+
     /*
      API errors follow a similar patter so we can
      abstract some getter functions

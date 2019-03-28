@@ -1,0 +1,13 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Tue, 19 Mar 2019 13:56:36 GMT
+Content-Type: application/json
+Connection: keep-alive
+Cache-Control: no-cache, no-store
+Access-Control-Max-Age: 300
+Access-Control-Allow-Credentials: true
+
+{
+    "account_id": 12345,
+    "uri": "http://stage.wepay.com/api/account_update_uri/12345"
+}

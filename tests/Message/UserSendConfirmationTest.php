@@ -33,6 +33,11 @@ class UserSendConfirmationTest extends AbstractRequestTestCase
         ];
     }
 
+    public function testEndpoint()
+    {
+        $this->_testEndpoint('user/send_confirmation');
+    }
+
     public function testSetRequestData()
     {
         $this->_testSetRequestData();

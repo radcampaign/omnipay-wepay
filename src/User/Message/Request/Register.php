@@ -29,15 +29,7 @@ class Register extends AbstractRequest
      */
     public function getData()
     {
-        $accepted = $this->getAcceptedParameters();
-        $ret = [];
-        foreach ($accepted as $param) {
-            if ($param !== 'send_confirmation') {
-                $ret[$param] = $this->getParameter($param);
-            }
-        }
-
-        return $ret;
+        return $this->getLazyLoadedData(['send_confirmation', 'access_token']);
     }
 
     public function getEndpoint()

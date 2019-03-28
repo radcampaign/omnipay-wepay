@@ -18,9 +18,10 @@
         "psr-4": { "Omnipay\\WePay\\" : "src/" }
     },
     "require-dev": {
-        "omnipay/tests": "^3.1",
         "psy/psysh": "^0.9.9",
-        "vlucas/phpdotenv": "^3.3"
+        "vlucas/phpdotenv": "^3.3",
+        "omnipay/tests": "^3.1",
+        "fzaninotto/faker": "^1.8"
     },
     "scripts": {
         "run-tests": "phpunit",
@@ -30,6 +31,10 @@
         {
             "type": "path",
             "url": "../omnipay-common"
+        },
+        {
+            "type": "path",
+            "url": "../omnipay-tests"
         }
     ]
 }

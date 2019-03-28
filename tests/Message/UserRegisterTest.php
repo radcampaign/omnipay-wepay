@@ -39,6 +39,11 @@ class UserRegisterTest extends AbstractRequestTestCase
         return $data;
     }
 
+    public function testEndpoint()
+    {
+        $this->_testEndpoint('user/register');
+    }
+
     public function testSetRegistrationData()
     {
         $this->_testSetRequestData();
@@ -46,31 +51,12 @@ class UserRegisterTest extends AbstractRequestTestCase
 
     public function testSendSuccess()
     {
-        $this->setMockHttpResponse('UserRegisterSuccess.txt');
-        $response = $this->getRequest()->send();
-
-        $this->_testResponseInstanceOf($response);
-
-        $this->assertTrue($response->isSuccessful());
+        $response = $this->_testSuccess('UserRegisterSuccess.txt');
         $this->assertFalse($response->isRedirect());
-        $this->assertSame(200, $response->getStatusCode());
-        $this->assertSame("OK", $response->getStatusReason());
     }
 
     public function testSendFailure()
     {
-        $this->setMockHttpResponse('UserRegisterError.txt');
-        $response = $this->getRequest()->send();
-
-        $this->_testResponseInstanceOf($response);
-
-        $this->assertFalse($response->isSuccessful());
-        $this->assertFalse($response->isRedirect());
-        $this->assertSame(400, $response->getStatusCode());
-        $this->assertSame("Bad Request", $response->getStatusReason());
-
-        $this->assertNotEmpty($response->getError());
-        $this->assertNotEmpty($response->getErrorDescription());
-        $this->assertNotEmpty($response->getErrorCode());
+        $response = $this->_testFailure('UserRegisterError.txt');
     }
 }

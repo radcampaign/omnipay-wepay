@@ -1,0 +1,55 @@
+/**
+ * @file contains #{COMMAND} class
+ *
+ * this command is used on the command line with `php artisan`. see Command::$name
+ * and Command::$example for how to use.
+ */
+namespace Omnipay\WePay\Artisan\Commands;
+
+use Omnipay\WePay\Artisan\AbstractCommand;
+// helpful traits
+use Omnipay\WePay\Artisan\UsesStubsTrait;
+use Omnipay\WePay\Artisan\BaseDirectoryAwareTrait;
+use Omnipay\WePay\Artisan\WritesFilesTrait;
+
+class #{COMMAND} extends AbstractCommand
+{
+    /**
+     * The name of the command for the command line
+     * @var string
+     */
+    protected $name = '// add name here';
+
+    /**
+     * An example of how to run the command
+     *
+     * @var string
+     */
+    protected $example = '// give example here';
+
+    /**
+     * A description of the command like what it does
+     *
+     * @var string
+     */
+    protected $description = '// give description here';
+
+    /**
+     * Arguments that this command may take
+     * example:
+     * <code>
+     *     protected $arguments = [
+     *          'gateway' => [
+     *              'description' => 'The type of gateway. accepted gateways are: payment, user, account'
+     *          ]
+     *      ];
+     * </code?
+     * @type array
+     */
+    protected $arguments = [];
+
+    public function handle()
+    {
+        // handles the command
+    }
+}

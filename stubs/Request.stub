@@ -1,0 +1,57 @@
+/**
+ * Makes Requests
+ */
+namespace Omnipay\WePay\#{GATEWAY}Message\Request;
+
+use Omnipay\WePay\Message\Request\AbstractRequest;
+use Omnipay\WePay\#{GATEWAY}Message\Response\#{RESPONSE};
+use Omnipay\WePay\Utilities\LazyLoadParametersTrait;
+use Omnipay\Common\Exception\InvalidRequestException;
+
+class #{REQUEST} extends AbstractRequest
+{
+    /**
+     * Uses overloading for lazy loading parameters so that
+     * we don't have to write setters and getters for each one
+     * - must set the class property `$accepted_parameters`
+     * DELETE THIS IF YOU DON'T WANT TO USE IT
+     */
+    // use LazyLoadParametersTrait;
+
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getData()
+    {
+        // use this to define the data that is sent with requests
+        return [];
+    }
+
+    /**
+     * Sets the api endpoint for the request. i.e 'account/find'
+     *
+     * @see AbstractRequest::buildEndpoint
+     *
+     * @return string
+     */
+    public function getEndpoint()
+    {
+        // set the endpoint
+        return '';
+    }
+
+    /**
+     * Creates our response
+     *
+     * @param  array   $data           Data from the response
+     * @param  array   $headers        Headers from the response
+     * @param  integer $code           The status code
+     * @param  string  $status_reason  The status reason
+     * @return #{RESPONSE}
+     */
+    protected function createResponse($data, $headers = [], $code, $status_reason = '')
+    {
+        return $this->response = new #{RESPONSE}($this, $data, $headers, $code, $status_reason);
+    }
+}

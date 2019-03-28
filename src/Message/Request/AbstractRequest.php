@@ -14,10 +14,13 @@ use Omnipay\WePay\RouterHooksTestModeTrait;
 use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Common\Exception\RuntimeException;
 use Omnipay\Common\Helper;
+use Omnipay\WePay\WePayDefaultGettersAndSettersTrait;
+use Symfony\Component\HttpFoundation\ParameterBag;
 
 abstract class AbstractRequest extends OmnipayAbstractRequest
 {
-    use RouterHooksTestModeTrait;
+    use RouterHooksTestModeTrait,
+        WePayDefaultGettersAndSettersTrait;
 
     /**
      * gets the endpoint for the request
@@ -39,6 +42,11 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
         return 'POST';
     }
 
+    /**
+     * Creates the new endpoint in full
+     *
+     * @return string
+     */
     public function buildEndpoint()
     {
         return Router::getEndpoint($this->getEndpoint());
@@ -76,25 +84,8 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
     }
 
     /**
-     * retrieves the access token to make requests on
-     * @return string
-     */
-    public function getAccessToken()
-    {
-        return $this->getParameter('accessToken');
-    }
-
-    /**
-     * Sets the access token
-     * @param string $value  the access token to make requests on
-     */
-    public function setAccessToken($value = '')
-    {
-        return $this->setParameter('accessToken', $value);
-    }
-
-    /**
      * Get api header
+     *
      * @return array
      */
     public function getApiHeaders()
@@ -105,8 +96,53 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
         ];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function createResponse($data, $headers = [], $code, $status_reason = '')
     {
         return $this->response = new Generic($this, $data, $headers, $code, $status_reason);
+    }
+
+    /**
+     * Checks if the instance has a parameter set
+     *
+     * @param  string  $key the parameter key to check
+     * @return boolean
+     */
+    public function hasParameter($key = '')
+    {
+        if ($this->parameters instanceof ParameterBag) {
+            return $this->parameters->has($key);
+        }
+
+        return false;
+    }
+
+    /**
+     * For cli testing and var_dumping. Helps see what is going on
+     * with our Request
+     *
+     * @return array
+     */
+    public function __debugInfo()
+    {
+        $endpoint = $this->buildEndpoint();
+        try {
+            $request_data = $this->getData();
+        }
+        catch (InvalidRequestException $error) {
+            $request_data = [];
+            $error = [
+                'error_code' => $error->getCode(),
+                'error_message' => $error->getMessage(),
+            ];
+        }
+
+        $dump = compact('endpoint', 'request_data');
+        if (isset($error)) {
+            $dump['error'] = $error;
+        }
+        return $dump;
     }
 }

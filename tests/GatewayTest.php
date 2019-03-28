@@ -6,6 +6,7 @@ namespace Omnipay\WePay;
 
 use Omnipay\Tests\GatewayTestCase;
 use Omnipay\WePay\Requests\Router;
+use Omnipay\WePay\Gateway;
 
 class GatewayTest extends GatewayTestCase
 {

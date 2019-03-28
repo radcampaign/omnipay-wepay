@@ -4,7 +4,7 @@
  */
 namespace Omnipay\WePay;
 
-use Omnipay\Tests\GatewayTestCase;
+use Omnipay\Tests\UserGatewayTestCase;
 use Omnipay\WePay\User\Gateway;
 use Omnipay\WePay\User\Message\Request\Find;
 use Omnipay\WePay\User\Message\Request\Modify;
@@ -13,7 +13,7 @@ use Omnipay\Common\Message\RequestInterface;
 use OmniPay\Common\Helper;
 use \Omnipay\WePay\Utilities\HasTestDataTrait;
 
-class UserGatewayTest extends GatewayTestCase
+class UserGatewayTest extends UserGatewayTestCase
 {
     use HasTestDataTrait;
 

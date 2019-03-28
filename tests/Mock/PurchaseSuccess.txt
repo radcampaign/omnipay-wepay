@@ -1,0 +1,60 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Tue, 19 Mar 2019 13:56:36 GMT
+Content-Type: application/json
+Connection: keep-alive
+Cache-Control: no-cache, no-store
+Access-Control-Max-Age: 300
+Access-Control-Allow-Credentials: true
+
+{
+    "checkout_id": 649945633,
+    "account_id": 1548718026,
+    "type": "donation",
+    "short_description": "test checkout",
+    "currency": "USD",
+    "amount": 20,
+    "state": "authorized",
+    "soft_descriptor": "WPY*Wolverine",
+    "auto_release": true,
+    "create_time": 1463589958,
+    "gross": 20.88,
+    "reference_id": null,
+    "callback_uri": null,
+    "long_description": null,
+    "delivery_type": null,
+    "initiated_by": "none",
+    "in_review": false,
+    "fee": {
+        "app_fee": 0,
+        "processing_fee": 0.88,
+        "fee_payer": "payer"
+    },
+    "chargeback": {
+        "amount_charged_back": 0,
+        "dispute_uri": null
+    },
+    "refund": {
+        "amount_refunded": 0,
+        "refund_reason": null
+    },
+    "payment_method": {
+        "type": "credit_card",
+        "credit_card": {
+            "id": 1684847614,
+            "data": {
+                "emv_receipt": null,
+                "signature_url": null
+            },
+            "auto_release": false
+        }
+    },
+    "hosted_checkout": null,
+    "payer": {
+        "email": "test@example.com",
+        "name": "Mr Smith",
+        "home_address": null
+    },
+    "npo_information": null,
+    "payment_error": null
+}

@@ -33,7 +33,7 @@ trait LazyLoadParametersTrait
                 if (in_array($key, $accepted_parameters)) {
                     $method = 'set'.ucfirst(OmniHelper::camelCase($key));
                     // if the method exists, then it was already handled
-                    // by the OmniHelper::initialize in parent::initialize
+                    // by the Omnipay\Common\Helper::initialize in parent::initialize
                     // so no need to call it again
                     if (!method_exists($this, $method)) {
                         $this->$method($value);
@@ -45,9 +45,36 @@ trait LazyLoadParametersTrait
         return $this;
     }
 
+    /**
+     * Retrieves the data that has been lazy loaded
+     *
+     * @param  array  $excludes  parameters that we may want to exclude
+     * @return array
+     */
+    protected function getLazyLoadedData($excludes = [], $keepEmpty = true)
+    {
+        $accepted = $this->getAcceptedParameters();
+        $ret = [];
+        foreach ($accepted as $param) {
+            if (!in_array($param, $excludes)) {
+                $value = $this->getParameter($param);
+                if (empty($value) && !$keepEmpty) {
+                    continue;
+                }
+
+                $ret[$param] = $value;
+            }
+        }
+
+        return $ret;
+    }
+
     public function getAcceptedParameters()
     {
         // option A - use a function that returns an associative array
+        // useful if you want to store information about each paramter - like
+        // if the parameter is required
+        // i.e. \Omnipay\WePay\Message\Request\Purchase
         if (method_exists($this, 'getDefaultAcceptedParameters')) {
             return array_keys($this->getDefaultAcceptedParameters());
         }

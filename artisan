@@ -1,0 +1,21 @@
+#!/usr/bin/env php
+<?php
+/**
+ * This handy command will add some scripting tools for us to
+ * easily create requests and such
+ */
+
+/**
+ * Register our autoloader
+ */
+define('ARTISAN_BASE_DIR', __DIR__);
+
+require join(DIRECTORY_SEPARATOR, [ARTISAN_BASE_DIR, 'vendor','autoload.php']);
+
+use Omnipay\WePay\Artisan\Commander;
+
+$input_command = $argv[1] ?? null;
+
+array_shift($argv); // remove the artisan
+
+Commander::initialize($argv);

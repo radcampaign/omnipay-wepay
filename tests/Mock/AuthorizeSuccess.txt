@@ -1,0 +1,28 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Tue, 19 Mar 2019 13:56:36 GMT
+Content-Type: application/json
+Connection: keep-alive
+Cache-Control: no-cache, no-store
+Access-Control-Max-Age: 300
+Access-Control-Allow-Credentials: true
+
+{
+    "credit_card_id": 235810395803,
+    "credit_card_name": "MasterCard xxxxxx4769",
+    "state": "new",
+    "user_name": "Bob Smith",
+    "email": "bob.smith@example.com",
+    "create_time": 1367958263,
+    "input_source": "card_keyed",
+    "virtual_terminal_mode": "none",
+    "reference_id": "123abc",
+    "expiration_month": 4,
+    "expiration_year": 2020,
+    "bin": "547456",
+    "last_four": "4769",
+    "auto_update": false,
+    "backing_instrument_name": null,
+    "card_on_file": false,
+    "recurring": false
+}

@@ -29,41 +29,27 @@ class UserModifyTest extends AbstractRequestTestCase
 
     public function testEndpoint()
     {
-        $this->assertSame('user/modify', $this->getRequest()->getEndpoint());
+        $this->_testEndpoint('user/modify');
+    }
 
-        $this->getRequest()->setTestMode(false);
-        $this->assertSame('https://wepayapi.com/v2/user/modify', $this->getRequest()->buildEndpoint());
-
-        // test when testMode gets turned back on
-        $this->getRequest()->setTestMode(true);
-        $this->assertSame('https://stage.wepayapi.com/v2/user/modify', $this->getRequest()->buildEndpoint());
+    public function testResponse()
+    {
+        $this->setMockHttpResponse('UserModifySuccess.txt');
+        $response = $this->getRequest()->send();
+        $this->_testResponseInstanceOf($response);
     }
 
     public function testSendSuccess()
     {
-        $this->setMockHttpResponse('UserModifySuccess.txt');
-
         $test = 'http://hello.test/';
         $this->getRequest()->setCallbackUri($test);
-        $response = $this->getRequest()->send();
-
-        $this->_testResponseInstanceOf($response);
-
-        $this->assertTrue($response->isSuccessful());
+        $response = $this->_testSuccess('UserModifySuccess.txt');
         $this->assertFalse($response->isRedirect());
-        $this->assertSame(200, $response->getStatusCode());
-        $this->assertSame("OK", $response->getStatusReason());
+        $this->assertSame($test, $response->getData('callback_uri'));
     }
 
     public function testSendFailure()
     {
-        $this->setMockHttpResponse('UserModifyError.txt');
-        $response = $this->getRequest()->send();
-
-        $this->_testResponseInstanceOf($response);
-
-        $this->assertFalse($response->isSuccessful());
-        $this->assertSame(400, $response->getStatusCode());
-        $this->assertSame("Bad Request", $response->getStatusReason());
+        $response = $this->_testFailure('UserModifyError.txt');
     }
 }

@@ -5,9 +5,12 @@
 
 namespace Omnipay\WePay;
 
+use Omnipay\WePay\Factories\RequestStructureFactory;
+
 trait WePayGatewayTrait
 {
-    use RouterHooksTestModeTrait;
+    use RouterHooksTestModeTrait,
+        WePayDefaultGettersAndSettersTrait;
 
     /**
      * Defining as a class variable our default parameters
@@ -24,7 +27,11 @@ trait WePayGatewayTrait
      */
     public function getDefaultParameters()
     {
-        return $this->default_parameters;
+        $defaults = $this->default_parameters;
+        if (property_exists($this, 'added_parameters') && is_array($this->added_parameters)) {
+            $defaults = array_merge($defaults, $this->added_parameters);
+        }
+        return $defaults;
     }
 
     /**
@@ -35,57 +42,18 @@ trait WePayGatewayTrait
         return 'wepay';
     }
 
-    /**
-     * The WePay instance needs the clientId
-     * @param string $value the client id
-     */
-    public function setClientId($value)
+    public function createRbit(array $data = [])
     {
-        return $this->setParameter('client_id', $value);
+        return RequestStructureFactory::rbitCreate('', $data);
     }
 
-    /**
-     * The wepay instance needs the client secret
-     * @param string $value the client secret
-     */
-    public function setClientSecret($value)
+    public function createRbitProperties(string $tag, array $data = [])
     {
-        return $this->setParameter('client_secret', $value);
+        return RequestStructureFactory::rbitCreate($tag, $data);
     }
 
-    /**
-     * Retrieves from parameters the client id
-     * @return string
-     */
-    public function getClientId()
+    public function getRequestStructure($tag = '', array $data = [])
     {
-        return $this->getParameter('client_id');
-    }
-
-    /**
-     * Retrieves the client secret
-     * @return string
-     */
-    public function getClientSecret()
-    {
-        return $this->getParameter('client_secret');
-    }
-
-    /**
-     * We need an accesstoken to for requests
-     * @return string
-     */
-    public function getAccessToken()
-    {
-        return $this->getParameter('access_token');
-    }
-
-    /**
-     * Sets the access token that we will generate requests for
-     * @param string $value
-     */
-    public function setAccessToken($value)
-    {
-        return $this->setParameter('access_token', $value);
+        return RequestStructureFactory::create($tag, $data);
     }
 }

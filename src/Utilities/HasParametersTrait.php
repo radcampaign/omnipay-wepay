@@ -49,6 +49,18 @@ trait HasParametersTrait
     }
 
     /**
+     * Checks that a parameter is set on our paramter back
+     *
+     * @param  string  $key
+     * @return boolean
+     */
+    public function hasParameter($key = '')
+    {
+        $bag = $this->_getBag();
+        return $bag->has($key);
+    }
+
+    /**
      * Determines if the bag has been initialized,
      * and if not it creates a new ParameterBag
      * @return Symfony\Component\HttpFoundation\ParameterBag

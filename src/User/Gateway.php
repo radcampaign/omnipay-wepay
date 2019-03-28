@@ -2,7 +2,7 @@
 
 namespace Omnipay\WePay\User;
 
-use Omnipay\Common\AbstractGateway;
+use Omnipay\Common\AbstractUserGateway;
 use WePay;
 use WePayException;
 use WePayRequestException;
@@ -19,12 +19,14 @@ use Omnipay\WePay\WePayGatewayTrait;
  * Our gateway class will initialize. To do this,
  * you must pass clientId and clientSecret into the gateway
  */
-class Gateway extends AbstractGateway
+class Gateway extends AbstractUserGateway
 {
     use WePayGatewayTrait;
 
     /**
      * Find the user
+     *
+     * @param  array  $parameters
      * @return RequestInterface
      */
     public function find(array $parameters = [])
@@ -34,7 +36,7 @@ class Gateway extends AbstractGateway
 
     /**
      * Request to modify user
-     * @param  array  $parameters [description]
+     * @param  array  $parameters
      * @return RequestInterface
      */
     public function modify(array $parameters = [])
