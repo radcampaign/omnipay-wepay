@@ -41,7 +41,7 @@ trait HasParametersTrait
      * @param string $key   the key for the value
      * @param mixed $value
      */
-    public function setParameter($key = '', $value)
+    public function setParameter($key = '', $value = null)
     {
         $bag = $this->_getBag();
         $bag->set($key, $value);
@@ -65,6 +65,7 @@ trait HasParametersTrait
      * and if not it creates a new ParameterBag
      * @return Symfony\Component\HttpFoundation\ParameterBag
      */
+    // phpcs:ignore
     protected function _getBag()
     {
         if (is_null($this->parameter_bag)) {

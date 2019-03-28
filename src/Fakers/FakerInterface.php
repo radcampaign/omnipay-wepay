@@ -2,7 +2,8 @@
 
 namespace Omnipay\WePay\Fakers;
 
-interface FakerInterface {
+interface FakerInterface
+{
     /**
      * Returns the fake data
      *

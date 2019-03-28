@@ -16,7 +16,7 @@ abstract class AbstractResponse extends BaseAbstract
 
     protected $status_reason;
 
-    public function __construct(RequestInterface $request, $data, $headers = [], $code, $status_reason = '')
+    public function __construct(RequestInterface $request, $data, $headers = [], $code = null, $status_reason = '')
     {
         $this->status_code = $code;
         $this->status_reason = $status_reason;

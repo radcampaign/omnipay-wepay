@@ -76,7 +76,7 @@ class CreateCard extends AbstractRequest
      * @param  string  $status_reason  The status reason
      * @return CreateCardResponse
      */
-    protected function createResponse($data, $headers = [], $code, $status_reason = '')
+    protected function createResponse($data, $headers = [], $code = null, $status_reason = '')
     {
         return $this->response = new CreateCardResponse($this, $data, $headers, $code, $status_reason);
     }
@@ -96,6 +96,5 @@ class CreateCard extends AbstractRequest
         // user_name (full name), email and address
         $first_name = $card->getFirstName();
         $last_name = $card->getLastName();
-
     }
 }

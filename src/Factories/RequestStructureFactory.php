@@ -68,11 +68,25 @@ class RequestStructureFactory
         if (class_exists($class)) {
             // throws an argument if the class does not have the right interface
             if (!self::classImplementsRequestStructureInterface($class)) {
-                throw new InvalidArgumentException(sprintf("Class %s found but it does not implement the %s interface.", $class, RequestStructureInterface::class));
+                throw new InvalidArgumentException(
+                    sprintf(
+                        // phpcs:ignore
+                        "Class %s found but it does not implement the %s interface.",
+                        $class,
+                        RequestStructureInterface::class
+                    )
+                );
             }
 
             if ($creatingRbit && !self::classIsRbitStructure($class)) {
-                throw new InvalidArgumentException(sprintf("Class %s found but either is not our base Rbit class or does not does not implement the %s interface.", $class, RbitPropertiesInterface::class));
+                throw new InvalidArgumentException(
+                    sprintf(
+                        // phpcs:ignore
+                        "Class %s found but either is not our base Rbit class or does not does not implement the %s interface.",
+                        $class,
+                        RbitPropertiesInterface::class
+                    )
+                );
             }
 
             self::registerModel($class);
@@ -80,7 +94,13 @@ class RequestStructureFactory
             return new $class($data);
         }
 
-        throw new InvalidArgumentException(sprintf("Could not resolve %s. Class %s could not be found.", $tag, $class));
+        throw new InvalidArgumentException(
+            sprintf(
+                "Could not resolve %s. Class %s could not be found.",
+                $tag,
+                $class
+            )
+        );
     }
 
     /**
@@ -141,7 +161,10 @@ class RequestStructureFactory
      */
     public static function classIsRbitStructure($class = '')
     {
-        return $class == self::$namespace . 'Rbit' || in_array(RbitPropertiesInterface::class, class_implements($class));
+        return $class == self::$namespace . 'Rbit' || in_array(
+            RbitPropertiesInterface::class,
+            class_implements($class)
+        );
     }
 
     /**

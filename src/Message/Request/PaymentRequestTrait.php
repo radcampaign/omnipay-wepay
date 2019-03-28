@@ -255,7 +255,8 @@ trait PaymentRequestTrait
 
     /**
      * retrieves the delivery type parameter
-     * possible values: fully_delivered, point_of_sale, shipping, donation, subscription, partial_prepayment, full_prepayment
+     * possible values: fully_delivered, point_of_sale, shipping, donation,
+     * subscription, partial_prepayment, full_prepayment
      *
      * @return string
      */
@@ -405,7 +406,7 @@ trait PaymentRequestTrait
 
         $ret_data = RequestStructureFactory::create('PaymentMethod', compact('type'));
 
-        switch($type) {
+        switch ($type) {
             case 'payment_bank':
                 $ret_data->payment_bank = $this->getPaymentBankStructure();
                 break;

@@ -94,8 +94,7 @@ class Rbit extends AbstractRequestStructure
 
         try {
             return RequestStructureFactory::rbitCreate($tag, $data);
-        }
-        catch (\InvalidArgumentException $error) {
+        } catch (\InvalidArgumentException $error) {
             throw new InvalidArgumentException(sprintf("Could not find a model for type %s", $tag));
         }
     }
@@ -124,8 +123,7 @@ class Rbit extends AbstractRequestStructure
         try {
             $this->getTypepropertiesModel();
             return true;
-        }
-        catch (\Throwable $error) {
+        } catch (\Throwable $error) {
             return false;
         }
     }

@@ -43,7 +43,7 @@ class Create extends AbstractRequest
         return 'account/create';
     }
 
-    protected function createResponse($data, $headers = [], $code, $status_reason = '')
+    protected function createResponse($data, $headers = [], $code = null, $status_reason = '')
     {
         return $this->response = new CreateResponse($this, $data, $headers, $code, $status_reason);
     }

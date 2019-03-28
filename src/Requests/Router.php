@@ -5,11 +5,12 @@
  */
 namespace Omnipay\WePay\Requests;
 
-use Omnipay\WePay\Utilities\isSingletonTrait;
+use Omnipay\WePay\Utilities\IsSingletonTrait;
 
-class Router {
+class Router
+{
 
-    use isSingletonTrait;
+    use IsSingletonTrait;
 
     /**
      * The live api url
@@ -66,7 +67,7 @@ class Router {
     {
         // remove webpoints that begin with
         if (substr($path, 0, 1) === '/') {
-            $path = substr($path,1);
+            $path = substr($path, 1);
         }
         return self::getApiUrl() . $path;
     }

@@ -48,6 +48,7 @@ abstract class AbstractRequestTestCase extends TestCase
      * @param  null|RequestInterface $response
      * @return void
      */
+    // phpcs:ignore
     protected function _testResponseInstanceOf($response = null)
     {
         $this->assertNotNull($response);
@@ -61,6 +62,7 @@ abstract class AbstractRequestTestCase extends TestCase
      * @param  string $endpoint  the shortname of the endpoint - i.e. user
      * @return void
      */
+    // phpcs:ignore
     protected function _testEndpoint($endpoint = '')
     {
         $this->assertSame($endpoint, $this->getRequest()->getEndpoint());
@@ -73,6 +75,7 @@ abstract class AbstractRequestTestCase extends TestCase
         $this->assertSame('https://stage.wepayapi.com/v2/' . $endpoint, $this->getRequest()->buildEndpoint());
     }
 
+    // phpcs:ignore
     protected function _testSuccess($mock = '')
     {
         $this->setMockHttpResponse($mock);
@@ -89,6 +92,7 @@ abstract class AbstractRequestTestCase extends TestCase
         return $response;
     }
 
+    // phpcs:ignore
     protected function _testFailure($mock = '')
     {
         $this->setMockHttpResponse($mock);

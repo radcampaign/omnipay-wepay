@@ -50,7 +50,7 @@ class #{REQUEST} extends AbstractRequest
      * @param  string  $status_reason  The status reason
      * @return #{RESPONSE}
      */
-    protected function createResponse($data, $headers = [], $code, $status_reason = '')
+    protected function createResponse($data, $headers = [], $code = null, $status_reason = '')
     {
         return $this->response = new #{RESPONSE}($this, $data, $headers, $code, $status_reason);
     }

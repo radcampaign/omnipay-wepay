@@ -2,7 +2,8 @@
 
 namespace Omnipay\WePay\Artisan;
 
-trait UsesStubsTrait {
+trait UsesStubsTrait
+{
     /**
      * Storage for our stub path directory
      * @var string
@@ -17,7 +18,8 @@ trait UsesStubsTrait {
     {
         if (empty($this->stubPath)) {
             $baseDir = defined('ARTISAN_BASE_DIR') ? ARTISAN_BASE_DIR : getcwd();
-            $this->stubPath = join(DIRECTORY_SEPARATOR,
+            $this->stubPath = join(
+                DIRECTORY_SEPARATOR,
                 [
                     $baseDir,
                     'stubs'
@@ -139,7 +141,7 @@ trait UsesStubsTrait {
      * @param  string $string    the string to replace the hash with
      * @return void              contents altered with pass-by-reference
      */
-    protected function replaceResponseNameHash(&$contents = '', $string)
+    protected function replaceResponseNameHash(&$contents = '', $string = '')
     {
         $contents = str_replace('#{RESPONSE}', $string, $contents);
     }
@@ -151,7 +153,7 @@ trait UsesStubsTrait {
      * @param  string $string    the string to replace the hash with
      * @return void              contents altered with pass-by-reference
      */
-    protected function replaceCommandHash(&$contents = '', $string)
+    protected function replaceCommandHash(&$contents = '', $string = '')
     {
         $contents = str_replace('#{COMMAND}', $string, $contents);
     }
@@ -163,7 +165,7 @@ trait UsesStubsTrait {
      * @param  string $string    the string to replace the hash with
      * @return void              contents altered with pass-by-reference
      */
-    protected function replaceDataStructureNameHash(&$contents = '', $string)
+    protected function replaceDataStructureNameHash(&$contents = '', $string = '')
     {
         $contents = str_replace('#{DSNAME}', $string, $contents);
     }
@@ -175,7 +177,7 @@ trait UsesStubsTrait {
      * @param  string $string    the string to replace the hash with
      * @return void              contents altered with pass-by-reference
      */
-    protected function replaceFakerNameHash(&$contents = '', $string)
+    protected function replaceFakerNameHash(&$contents = '', $string = '')
     {
         $contents = str_replace('#{FAKER}', $string, $contents);
     }

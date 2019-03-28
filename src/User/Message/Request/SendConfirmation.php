@@ -46,7 +46,7 @@ class SendConfirmation extends AbstractRequest
         return 'user/send_confirmation';
     }
 
-    protected function createResponse($data, $headers = [], $code, $status_reason = '')
+    protected function createResponse($data, $headers = [], $code = null, $status_reason = '')
     {
         return $this->response = new SendConfirmationResponse($this, $data, $headers, $code, $status_reason);
     }

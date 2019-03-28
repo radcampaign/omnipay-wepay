@@ -96,8 +96,7 @@ class Purchase extends AbstractRequest
 
         if ($this->isHostedCheckout()) {
             $data['hosted_checkout'] = $this->getHostedCheckoutStructure();
-        }
-        else {
+        } else {
             $data['unique_id'] = $transaction_id;
             $data['payment_method'] = $this->getPaymentMethodStructure();
         }
@@ -127,7 +126,7 @@ class Purchase extends AbstractRequest
      * @param  string  $status_reason  The status reason
      * @return PurchaseResponse
      */
-    protected function createResponse($data, $headers = [], $code, $status_reason = '')
+    protected function createResponse($data, $headers = [], $code = null, $status_reason = '')
     {
         return $this->response = new PurchaseResponse($this, $data, $headers, $code, $status_reason);
     }

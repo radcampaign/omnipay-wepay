@@ -3,3 +3,4 @@ composer.lock
 phpunit.xml
 .env-testing
 .psysh-local.php
+style-errors.log

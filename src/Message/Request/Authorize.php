@@ -38,7 +38,7 @@ class Authorize extends AbstractRequest
         return 'credit_card/authorize';
     }
 
-    protected function createResponse($data, $headers = [], $code, $status_reason = '')
+    protected function createResponse($data, $headers = [], $code = null, $status_reason = '')
     {
         return $this->response = new AuthorizeResponse($this, $data, $headers, $code, $status_reason);
     }

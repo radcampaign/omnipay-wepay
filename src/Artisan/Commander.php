@@ -4,11 +4,11 @@
  */
 namespace Omnipay\WePay\Artisan;
 
-use Omnipay\WePay\Utilities\isSingletonTrait;
+use Omnipay\WePay\Utilities\IsSingletonTrait;
 
 class Commander
 {
-    use isSingletonTrait;
+    use IsSingletonTrait;
 
     /**
      * A place ot save all of the commands
@@ -197,8 +197,8 @@ class Commander
 
         $args = self::getOptions();
         if (empty($args)) {
-            return null
-;        }
+            return null;
+        }
 
         $test = '--' . $name;
 

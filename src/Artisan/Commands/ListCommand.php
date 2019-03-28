@@ -20,7 +20,7 @@ class ListCommand extends AbstractCommand
         $len = count($registered_commands);
         $counter = 0;
         $default_indent = 25;
-         foreach ($registered_commands as $name => $tmp) {
+        foreach ($registered_commands as $name => $tmp) {
             echo $name;
             echo $this->WhiteSpace($default_indent - strlen($name)) . $tmp->getDescription();
 
@@ -45,13 +45,13 @@ class ListCommand extends AbstractCommand
                 }
             }
 
-            if ($counter !== ($len - 1)){
+            if ($counter !== ($len - 1)) {
                 $this->newLine();
                 $this->newLine();
             }
 
             $counter++;
-         }
+        }
 
          $this->newLine();
     }

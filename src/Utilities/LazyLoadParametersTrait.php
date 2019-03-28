@@ -91,12 +91,12 @@ trait LazyLoadParametersTrait
     public function __call($method, $arguments = [])
     {
         // 1 determine if it is a set call or a get call
-        $action = substr($method, 0 , 3);
+        $action = substr($method, 0, 3);
         if (in_array($action, ['get', 'set']) && strlen($method) > 3) {
             $accepted = $this->getAcceptedParameters();
             $param = Helper::snakeCase(substr($method, 3));
             if (!empty($param) && in_array($param, $accepted)) {
-                switch($action) {
+                switch ($action) {
                     case 'get':
                         return $this->getParameter($param);
                     case 'set':

@@ -36,7 +36,7 @@ class Modify extends AbstractRequest
         return $this->setParameter('callback_uri', $value);
     }
 
-    protected function createResponse($data, $headers = [], $code, $status_reason = '')
+    protected function createResponse($data, $headers = [], $code = null, $status_reason = '')
     {
         return $this->response = new ModifyResponse($this, $data, $headers, $code, $status_reason);
     }

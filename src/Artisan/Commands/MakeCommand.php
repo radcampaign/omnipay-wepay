@@ -33,9 +33,11 @@ class MakeCommand extends AbstractCommand
         $name = $this->getClArgument(0);
 
         if (empty($name)) {
-            $this->writeLine(sprintf(
-                'You must tell us the name of the new command. I.E. `%s`',
-                $this->example)
+            $this->writeLine(
+                sprintf(
+                    'You must tell us the name of the new command. I.E. `%s`',
+                    $this->example
+                )
             );
             return;
         }
@@ -53,9 +55,7 @@ class MakeCommand extends AbstractCommand
         $this->log(
             sprintf(
                 "Written to %s",
-                ltrim(str_replace(
-                    getcwd(), "", $location
-                ), "/")
+                ltrim(str_replace(getcwd(), "", $location), "/")
             )
         );
     }
@@ -71,7 +71,16 @@ class MakeCommand extends AbstractCommand
 
     protected function getCommandFilePath()
     {
-        return join(DIRECTORY_SEPARATOR, [$this->getBaseDirectory(), 'src', 'Artisan', 'Commands', $this->getFileName()]);
+        return join(
+            DIRECTORY_SEPARATOR,
+            [
+                $this->getBaseDirectory(),
+                'src',
+                'Artisan',
+                'Commands',
+                $this->getFileName()
+            ]
+        );
     }
 
     protected function getCommandClassName()

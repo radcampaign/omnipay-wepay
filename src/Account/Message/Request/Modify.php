@@ -50,7 +50,7 @@ class Modify extends AbstractRequest
         return 'account/modify';
     }
 
-    protected function createResponse($data, $headers = [], $code, $status_reason = '')
+    protected function createResponse($data, $headers = [], $code = null, $status_reason = '')
     {
         return $this->response = new ModifyResponse($this, $data, $headers, $code, $status_reason);
     }

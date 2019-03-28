@@ -60,9 +60,11 @@ class Faker extends AbstractCommand
         $name = $this->getClArgument(0);
 
         if (empty($name)) {
-            $this->writeLine(sprintf(
-                'You must tell us the name of the new command. I.E. `%s`',
-                $this->example)
+            $this->writeLine(
+                sprintf(
+                    'You must tell us the name of the new command. I.E. `%s`',
+                    $this->example
+                )
             );
             return;
         }
@@ -80,9 +82,7 @@ class Faker extends AbstractCommand
         $this->log(
             sprintf(
                 "Written to %s",
-                ltrim(str_replace(
-                    getcwd(), "", $location
-                ), "/")
+                ltrim(str_replace(getcwd(), "", $location), "/")
             )
         );
     }

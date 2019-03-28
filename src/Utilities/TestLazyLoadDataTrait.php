@@ -16,6 +16,7 @@ trait TestLazyLoadDataTrait
      *
      * @return array
      */
+    // phpcs:ignore
     protected function _getTestRequestdata()
     {
         $data = [];
@@ -41,6 +42,7 @@ trait TestLazyLoadDataTrait
         }
     }
 
+    // phpcs:ignore
     protected function _testSetRequestData()
     {
         $data = $this->getRequestData();

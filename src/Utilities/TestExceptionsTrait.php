@@ -5,6 +5,7 @@
 namespace Omnipay\WePay\Utilities;
 
 use Omnipay\Common\Exception\InvalidRequestException;
+
 /**
  * Helper trait to test some common Omnipay Exception
  * Example:

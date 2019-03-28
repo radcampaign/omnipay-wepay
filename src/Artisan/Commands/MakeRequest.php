@@ -71,13 +71,11 @@ class MakeRequest extends AbstractCommand
     protected function reportLocation($location = '')
     {
         $this->log(
-                sprintf(
-                    "    to %s",
-                    ltrim(str_replace(
-                        getcwd(), "", $location
-                    ), "/")
-                )
-            );
+            sprintf(
+                "    to %s",
+                ltrim(str_replace(getcwd(), "", $location), "/")
+            )
+        );
     }
 
     protected function writeTest()
@@ -155,7 +153,7 @@ class MakeRequest extends AbstractCommand
 
     protected function getNewResponseFileLocation()
     {
-       return $this->getGatewayFileLocation(['Message', 'Response'], $this->responseName);
+        return $this->getGatewayFileLocation(['Message', 'Response'], $this->responseName);
     }
 
     protected function getNewRequestFileLocation()

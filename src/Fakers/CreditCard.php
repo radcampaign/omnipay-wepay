@@ -35,9 +35,9 @@ class CreditCard extends AbstractFaker
         ];
 
         // get a random card and add some fake expiry month and year info
-        $card['expiryMonth'] = str_pad((string) rand(1,12), 2, "0", STR_PAD_LEFT);
+        $card['expiryMonth'] = str_pad((string) rand(1, 12), 2, "0", STR_PAD_LEFT);
         $start_year = (int) date('Y');
-        $card['expiryYear'] = (string) rand( $start_year + 1,  $start_year + 10);
+        $card['expiryYear'] = (string) rand($start_year + 1, $start_year + 10);
         $card['cvv'] = (string) rand(100, 999);
 
         return $card;

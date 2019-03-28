@@ -99,7 +99,7 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
     /**
      * {@inheritdoc}
      */
-    protected function createResponse($data, $headers = [], $code, $status_reason = '')
+    protected function createResponse($data, $headers = [], $code = null, $status_reason = '')
     {
         return $this->response = new Generic($this, $data, $headers, $code, $status_reason);
     }
@@ -130,8 +130,7 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
         $endpoint = $this->buildEndpoint();
         try {
             $request_data = $this->getData();
-        }
-        catch (InvalidRequestException $error) {
+        } catch (InvalidRequestException $error) {
             $request_data = [];
             $error = [
                 'error_code' => $error->getCode(),

@@ -9,7 +9,8 @@ trait HasTestDataTrait
     /**
      * Retrieves test data for our tests
      *
-     * @param  string $key  optional - pass a key to retrieve a single variable, if empty, it returns all of our test data
+     * @param  string $key  optional - pass a key to retrieve a single variable,
+     *                                 if empty, it returns all of our test data
      *
      * @return string|array
      */

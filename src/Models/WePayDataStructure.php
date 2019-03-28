@@ -55,7 +55,8 @@ abstract class WePayDataStructure
      *
      * @throws  BadMethodCallException  if the property is not accepted for the class
      */
-    public function __set($name, $value = null) {
+    public function __set($name, $value = null)
+    {
         $accepted = $this->getAcceptedParameters();
 
         // first, check if there is a setter method that can satisfy this
@@ -116,13 +117,14 @@ abstract class WePayDataStructure
      *
      * @return [type]            [description]
      */
-    public function __call($method, $arguments) {
-        $action = substr($method, 0 , 3);
+    public function __call($method, $arguments)
+    {
+        $action = substr($method, 0, 3);
         if (in_array($action, ['get', 'set']) && strlen($method) > 3) {
             $accepted = $this->getAcceptedParameters();
             $param = Helper::snakeCase(substr($method, 3));
             if (!empty($param) && in_array($param, $accepted)) {
-                switch($action) {
+                switch ($action) {
                     case 'get':
                         return $this->getParameter($param);
                     case 'set':

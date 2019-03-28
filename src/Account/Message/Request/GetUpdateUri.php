@@ -42,7 +42,7 @@ class GetUpdateUri extends AbstractRequest
         return 'account/get_update_uri';
     }
 
-    protected function createResponse($data, $headers = [], $code, $status_reason = '')
+    protected function createResponse($data, $headers = [], $code = null, $status_reason = '')
     {
         return $this->response = new GetUpdateUriResponse($this, $data, $headers, $code, $status_reason);
     }

@@ -144,7 +144,7 @@ class DeleteRequest extends AbstractCommand
 
     protected function getNewResponseFileLocation()
     {
-       return $this->getGatewayFileLocation(['Message', 'Response'], $this->responseName);
+        return $this->getGatewayFileLocation(['Message', 'Response'], $this->responseName);
     }
 
     protected function getNewRequestFileLocation()
