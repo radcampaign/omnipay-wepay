@@ -10,19 +10,19 @@ This project was built with the [radcampaign/omnipay-common](https://github.com/
 
 To retrieve the payment gateway, run:
 ```
-$gateway = Omnipay\Omnipay::create('Wepay');
+$gateway = Omnipay\Omnipay::create('WePay');
 // you can also run
-$gateway = Omnipay\Omnipay::payment('Wepay');
+$gateway = Omnipay\Omnipay::payment('WePay');
 ```
 
 To retrieve the account gateway, run:
 ```
-$gateway = Omnipay\Omnipay::account('Wepay');
+$gateway = Omnipay\Omnipay::account('WePay');
 ```
 
 To retrieve the user gateway, run:
 ```
-$gateway = Omnipay\Omnipay::user('Wepay');
+$gateway = Omnipay\Omnipay::user('WePay');
 ```
 
 ## Testing
@@ -34,4 +34,8 @@ After install the package, simply run `composer run-tests` or call `./vendor/bin
 Have ideas? Please fork and submit a pull request. Or email us at info@radcampaign.com. Just like they say over at the League of Extraordinary Packages, no idea is too big or too small.
 
 For testing, We included the [psysh](https://psysh.org/) package. To use the interactive shell, simply run `./cli` from the command line or run `./vendor/bin/pysh`. This project includes a `.psysh.php` configuration to bootstrap the environment and define some helpful functions for the cli environment. It also has support for a `.psysh-local.php` that is git ignored for any custom functions you may want to include.
+
+### Artisan
+
+A command line tool for stubbing your project. Yeah, so what? I stole the name from Laravel. I wasn't feeling particularly creative when I wrote artisan. Nonetheless, to see what commands are available, simply run `php artisan list`.
 
