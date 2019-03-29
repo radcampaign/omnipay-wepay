@@ -1,11 +1,11 @@
 <?php
 
-namespace Omnipay\WePay\Data\Conformers;
+namespace Omnipay\WePay\Data\Mutators;
 
 use Omnipay\Common\CreditCard;
 use Omnipay\WePay\Factories\RequestStructureFactory;
 
-abstract class AbstractConformer implements ConformersInterface
+abstract class AbstractMutator implements MutatorInterface
 {
     /**
      * Storage for our CrediCard

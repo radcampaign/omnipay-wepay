@@ -1,10 +1,10 @@
 <?php
 
-namespace Omnipay\WePay\Data\Conformers;
+namespace Omnipay\WePay\Data\Mutators;
 
 use Omnipay\Common\CreditCard;
 
-interface ConformersInterface
+interface MutatorInterface
 {
     /**
      * Sets the credit card object

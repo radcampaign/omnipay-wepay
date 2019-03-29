@@ -1,10 +1,10 @@
 <?php
 
-namespace Omnipay\WePay\Data\Conformers;
+namespace Omnipay\WePay\Data\Mutators;
 
 use Omnipay\WePay\Helper;
 
-class Address extends AbstractConformer
+class Address extends AbstractMutator
 {
     /**
      * {@inheritdoc}

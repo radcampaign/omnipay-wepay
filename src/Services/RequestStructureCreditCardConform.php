@@ -8,7 +8,7 @@ namespace Omnipay\WePay\Services;
 
 use Omnipay\WePay\Helper;
 use Omnipay\Common\CreditCard;
-use Omnipay\WePay\Data\Conformers\ConformersInterface;
+use Omnipay\WePay\Data\Mutators\MutatorInterface;
 
 class RequestStructureCreditCardConform implements ServiceInterface
 {
@@ -17,7 +17,7 @@ class RequestStructureCreditCardConform implements ServiceInterface
      *
      * @var string
      */
-    protected static $namespace = '\\Omnipay\\WePay\\Data\\Conformers\\';
+    protected static $namespace = '\\Omnipay\\WePay\\Data\\Mutators\\';
 
     /**
      * Storage for the Request Structure Tag
@@ -60,11 +60,11 @@ class RequestStructureCreditCardConform implements ServiceInterface
 
         $class = self::$namespace . $rs_tag;
         if (!class_exists($class)) {
-            throw new \Exception("Conformer for $rs_tag does not exist");
+            throw new \Exception("Mutator for $rs_tag does not exist");
         }
 
         if (!self::classImplementsInterface($class)) {
-            throw new \Exception("Found $class but fails to implement our ConformersInterface");
+            throw new \Exception("Found $class but fails to implement our MutatorInterface");
         }
 
         $obj = new $class;
@@ -96,6 +96,6 @@ class RequestStructureCreditCardConform implements ServiceInterface
 
     public static function classImplementsInterface($class = '')
     {
-        return in_array(ConformersInterface::class, class_implements($class));
+        return in_array(MutatorInterface::class, class_implements($class));
     }
 }
