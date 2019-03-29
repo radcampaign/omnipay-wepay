@@ -50,5 +50,4 @@ interface RequestStructureInterface extends ArrayableInterface, JsonSerializable
      * @return $this
      */
     public function fill(array $data = []);
-
 }
