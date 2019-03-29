@@ -36,6 +36,7 @@ class Purchase extends AbstractRequest
             'type' => true,
             'amount' => true,
             'currency' => true,
+            'soft_descriptor' => false,
             'long_description' => false,
             'email_message' => false,
             'fee' => false,
@@ -76,7 +77,8 @@ class Purchase extends AbstractRequest
             $long_description = $short_description;
         }
 
-        $transaction_id = (string) $this->getTransactionId();
+        $transaction_id = $this->getTransactionId();
+        $transaction_id = is_null($transaction_id) ? null : (string) $transaction_id;
 
         $fee = $this->getFeeStructure();
         $data = [
@@ -85,6 +87,7 @@ class Purchase extends AbstractRequest
             'amount'            => $this->getAmount(),
             'type'              => $this->getType(),
             'currency'          => $this->getCurrency(),
+            'soft_descriptor'   => $this->getSoftDescriptor(),
             'short_description' => $this->getDescription(),
             'long_description'  => $long_description,
             'fee'               => $fee->isEmpty() ? null : $fee,

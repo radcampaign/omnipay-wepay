@@ -75,6 +75,29 @@ class Helper
     }
 
     /**
+     * Similar to array_replace but it does not
+     * create new keys in the first array if there are keys in the second array.
+     *
+     * @param  array  $array1 the first array to compare
+     * @param  array $arrays any subsequent array to retrieve values from
+     * @return array
+     */
+    public static function arrayStrictReplace(array $array1, array  ...$arrays)
+    {
+        $keys = array_keys($array1);
+
+        foreach ($arrays as $array) {
+            $tmpArray = array_filter($array, function ($v, $k) use ($keys) {
+                return in_array($k, $keys);
+            }, ARRAY_FILTER_USE_BOTH);
+
+            $array1 = array_replace($array1, $tmpArray);
+        }
+
+        return $array1;
+    }
+
+    /**
      * Helper to log output
      *
      * @param  mixed $args things that we want logged

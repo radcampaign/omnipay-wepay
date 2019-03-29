@@ -82,6 +82,7 @@ function createRbit(array $data = [])
 function getFakeCreditCardNumbers()
 {
     $faker = FakerFactory::create('credit_card');
+    $faker->setIncludeAddress(true);
     return $faker->fake();
 }
 

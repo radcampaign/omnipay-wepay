@@ -7,4 +7,7 @@ Cache-Control: no-cache, no-store
 Access-Control-Max-Age: 300
 Access-Control-Allow-Credentials: true
 
-{}
+{
+    "credit_card_id": 2825169832,
+    "state": "new"
+}

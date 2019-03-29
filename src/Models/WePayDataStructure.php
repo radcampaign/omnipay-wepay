@@ -17,9 +17,22 @@ abstract class WePayDataStructure
      */
     public function __construct(array $data = [])
     {
+        $this->fill($data);
+    }
+
+    /**
+     * Fills our data structure with data from an
+     * array
+     *
+     * @param  array  $data
+     * @return $this
+     */
+    public function fill(array $data = [])
+    {
         foreach ($data as $key => $value) {
             $this->$key = $value;
         }
+        return $this;
     }
 
     /**

@@ -19,6 +19,8 @@ namespace Omnipay\WePay\Fakers;
  */
 class CreditCard extends AbstractFaker
 {
+    protected $includeAddress = false;
+
     /**
      * {@inheritdoc}
      */
@@ -27,12 +29,20 @@ class CreditCard extends AbstractFaker
         // retrieves our Faker\Generator
         $faker = $this->generator();
 
+        $first_name = $faker->firstName();
+        $last_name = $faker->lastName();
         $card = [
             'number'    => $faker->creditCardNumber(),
-            'firstName' => $faker->firstName(),
-            'lastName'  => $faker->lastName(),
-            'email'     => $faker->email(),
+            'firstName' => $first_name,
+            'lastName'  => $last_name,
+            'email'     => $first_name . '.' . $last_name . '@example.com',
         ];
+
+        if ($this->getIncludeAddress()) {
+            $address = (new Address())->fake();
+            $address['postcode'] = $address['postal_code'];
+            $card = array_merge($card, $address);
+        }
 
         // get a random card and add some fake expiry month and year info
         $card['expiryMonth'] = str_pad((string) rand(1, 12), 2, "0", STR_PAD_LEFT);
@@ -41,5 +51,16 @@ class CreditCard extends AbstractFaker
         $card['cvv'] = (string) rand(100, 999);
 
         return $card;
+    }
+
+    public function setIncludeAddress(bool $include = false)
+    {
+        $this->includeAddress = $include;
+        return $this;
+    }
+
+    public function getIncludeAddress()
+    {
+        return $this->includeAddress;
     }
 }

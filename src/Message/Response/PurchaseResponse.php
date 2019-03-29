@@ -12,7 +12,7 @@ class PurchaseResponse extends AbstractResponse
      * Defines success for the request
      * @return {Boolean}
      */
-    public function isSucessful()
+    public function isSuccessful()
     {
         // input your own success rules here
         return parent::isSuccessful() && !empty($this->getData('checkout_id'));

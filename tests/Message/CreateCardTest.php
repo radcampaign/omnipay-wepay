@@ -82,7 +82,7 @@ class CreateCardTest extends AbstractRequestTestCase
      */
     public function testSendSuccess()
     {
-        $this->_testSuccess('CreateCardSuccess.txt');
+        $response = $this->_testSuccess('CreateCardSuccess.txt');
     }
 
     /**

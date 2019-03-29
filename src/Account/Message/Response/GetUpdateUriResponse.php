@@ -6,7 +6,7 @@ use Omnipay\WePay\Message\Response\AbstractResponse;
 
 class GetUpdateUriResponse extends AbstractResponse
 {
-    public function isSucessful()
+    public function isSuccessful()
     {
         $reqNotEmpty = parent::isSuccessful();
         $uriPresent = !empty($this->getData('uri'));

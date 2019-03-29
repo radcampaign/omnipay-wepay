@@ -10,11 +10,19 @@ class CreateCardResponse extends AbstractResponse
 {
     /**
      * Defines success for the request
-     * @return {Boolean}
+     * @return boolean
      */
-    public function isSucessful()
+    public function isSuccessful()
     {
-        // input your own success rules here
-        return parent::isSuccessful();
+        return parent::isSuccessful() && !is_null($this->getToken());
+    }
+
+    /**
+     * Gets the credit card id
+     * @return void
+     */
+    public function getToken()
+    {
+        return $this->getData('credit_card_id');
     }
 }

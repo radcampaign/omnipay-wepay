@@ -6,7 +6,7 @@ use Omnipay\WePay\Message\Response\AbstractResponse;
 
 class ModifyResponse extends AbstractResponse
 {
-    public function isSucessful()
+    public function isSuccessful()
     {
         return parent::isSuccessful() && !empty($this->getData());
     }

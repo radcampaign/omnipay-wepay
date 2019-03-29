@@ -6,7 +6,7 @@ use Omnipay\WePay\Message\Response\AbstractResponse;
 
 class DeleteResponse extends AbstractResponse
 {
-    public function isSucessful()
+    public function isSuccessful()
     {
         $reqNotEmpty = parent::isSuccessful();
         $stateIsDeleted = !empty($this->getData('state')) && $this->getData('state') === 'deleted';

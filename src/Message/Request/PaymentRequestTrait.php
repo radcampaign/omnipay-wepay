@@ -250,7 +250,7 @@ trait PaymentRequestTrait
 
     public function setDeliveryType($value)
     {
-        return $this->getParameter('delivery_type', $value);
+        return $this->setParameter('delivery_type', $value);
     }
 
     /**

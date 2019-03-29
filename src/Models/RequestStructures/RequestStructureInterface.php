@@ -42,4 +42,13 @@ interface RequestStructureInterface extends ArrayableInterface, JsonSerializable
      * @return boolean
      */
     public function isEmpty();
+
+    /**
+     * Fills our request structure wtih data
+     *
+     * @param  array  $data
+     * @return $this
+     */
+    public function fill(array $data = []);
+
 }

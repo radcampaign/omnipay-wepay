@@ -9,9 +9,9 @@ Access-Control-Max-Age: 300
 Access-Control-Allow-Credentials: true
 
 {
-    "error": "Something when wrong",
-    "error_description": "invalid something or other",
-    "error_code": 8009,
+    "error": "invalid_request",
+    "error_description": "Zip code is invalid",
+    "error_code": 10003,
     "details": [],
-    "documentation_url": "https://developer.wepay.com/api/general/errors"
+    "documentation_url": "https://developer.wepay.com/api/api-calls/credit_card#create"
 }

@@ -146,4 +146,14 @@ abstract class AbstractResponse extends BaseAbstract
     {
         return $this->getData('details');
     }
+
+    /**
+     * For var dumps and cli testing
+     *
+     * @return array
+     */
+    public function __debugInfo()
+    {
+        return $this->getData();
+    }
 }
