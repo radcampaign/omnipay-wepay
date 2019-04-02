@@ -33,7 +33,7 @@ abstract class AbstractMutator implements MutatorInterface
     /**
      * {@inheritdoc}
      */
-    abstract public function conform();
+    abstract public function mutate();
 
     /**
      * {@inheritdoc}

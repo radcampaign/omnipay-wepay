@@ -155,4 +155,15 @@ abstract class WePayDataStructure
     {
         return $this->getParameters();
     }
+
+    /**
+     * For car dump - gets the data from toArray to dump out as the
+     * representation of our object
+     *
+     * @return array
+     */
+    public function __debugInfo()
+    {
+        return $this->toArray();
+    }
 }

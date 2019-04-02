@@ -4,7 +4,7 @@ namespace Omnipay\WePay\Data\Mutators;
 
 use Omnipay\WePay\Helper;
 
-class Address extends AbstractMutator
+class AddressFromCard extends AbstractMutator
 {
     /**
      * {@inheritdoc}
@@ -17,7 +17,7 @@ class Address extends AbstractMutator
     /**
      * {@inheritdoc}
      */
-    public function conform()
+    public function mutate()
     {
         $card = $this->getCard();
         if (is_null($card)) {

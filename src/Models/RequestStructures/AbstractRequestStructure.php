@@ -8,6 +8,12 @@ use Omnipay\WePay\Helper;
 abstract class AbstractRequestStructure extends WePayDataStructure implements RequestStructureInterface
 {
     /**
+     * For our iterator
+     * @var integer
+     */
+    private $iterator_pos = 0;
+
+    /**
      * {@inheritdoc}
      */
     public function getRequiredParameters()
@@ -121,13 +127,57 @@ abstract class AbstractRequestStructure extends WePayDataStructure implements Re
     }
 
     /**
-     * For car dump - gets the data from toArray to dump out as the
-     * representation of our object
-     *
-     * @return array
+     * Our array Access methods
      */
-    public function __debugInfo()
+
+    public function offsetExists($offset)
     {
-        return $this->toArray();
+        return $this->hasParameter($offset);
+    }
+
+    public function offsetGet($offset)
+    {
+        return $this->getParameter($offset);
+    }
+
+    public function offsetSet($offset, $value)
+    {
+        return $this->setParameter($offset, $value);
+    }
+
+    public function offsetUnset($offset)
+    {
+        $this->parameters->remove($offset);
+    }
+
+    /**
+     * Iterator Methods
+     */
+    public function rewind()
+    {
+        $this->iterator_pos = 0;
+    }
+
+    public function current()
+    {
+        $keys = $this->getAcceptedParameters();
+        return $this->{$keys[$this->iterator_pos]};
+    }
+
+    public function key()
+    {
+        $keys = $this->getAcceptedParameters();
+        return $keys[$this->iterator_pos];
+    }
+
+    public function next()
+    {
+        $this->iterator_pos++;
+    }
+
+    public function valid()
+    {
+        $keys = $this->getAcceptedParameters();
+        return isset($keys[$this->iterator_pos]);
     }
 }

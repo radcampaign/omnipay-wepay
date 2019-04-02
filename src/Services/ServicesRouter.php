@@ -11,7 +11,7 @@ class ServicesRouter
     use IsSingletonTrait;
 
     protected $registered = [
-        'rs_cc' => RequestStructureCreditCardConform::Class
+        'rs_cc' => RequestStructureCreditCardMutate::Class
     ];
 
     public function get($service = '')

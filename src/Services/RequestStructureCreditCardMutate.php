@@ -10,7 +10,7 @@ use Omnipay\WePay\Helper;
 use Omnipay\Common\CreditCard;
 use Omnipay\WePay\Data\Mutators\MutatorInterface;
 
-class RequestStructureCreditCardConform implements ServiceInterface
+class RequestStructureCreditCardMutate implements ServiceInterface
 {
     /**
      * The namespace from where the conformers exist
@@ -23,7 +23,7 @@ class RequestStructureCreditCardConform implements ServiceInterface
      * Storage for the Request Structure Tag
      * @var string
      */
-    protected $rs_tag = '';
+    protected $mutator_tag = '';
 
     /**
      * Storage for the CrediCard
@@ -48,8 +48,8 @@ class RequestStructureCreditCardConform implements ServiceInterface
      */
     public function invoke()
     {
-        $rs_tag = Helper::paramMethodized($this->getRSTag());
-        if (empty($rs_tag)) {
+        $mutator_tag = Helper::paramMethodized($this->getMutatorTag());
+        if (empty($mutator_tag)) {
             throw new \Exception("Must set the Request Structure tag using setRSTag");
         }
 
@@ -58,7 +58,7 @@ class RequestStructureCreditCardConform implements ServiceInterface
             throw new \Exception("Must set the CreditCard object using setCard");
         }
 
-        $class = self::$namespace . $rs_tag;
+        $class = self::$namespace . $mutator_tag;
         if (!class_exists($class)) {
             throw new \Exception("Mutator for $rs_tag does not exist");
         }
@@ -69,17 +69,17 @@ class RequestStructureCreditCardConform implements ServiceInterface
 
         $obj = new $class;
         $obj->setCard($card);
-        return $obj->conform();
+        return $obj->mutate();
     }
 
-    public function getRSTag()
+    public function getMutatorTag()
     {
-        return $this->rs_tag;
+        return $this->mutator_tag;
     }
 
-    public function setRSTag(string $rs_tag = '')
+    public function setMutatorTag(string $mutator_tag = '')
     {
-        $this->rs_tag = $rs_tag;
+        $this->mutator_tag = $mutator_tag;
         return $this;
     }
 

@@ -4,8 +4,10 @@ namespace Omnipay\WePay\Models\RequestStructures;
 
 use Omnipay\WePay\Utilities\ArrayableInterface;
 use JsonSerializable;
+use ArrayAccess;
+use Iterator;
 
-interface RequestStructureInterface extends ArrayableInterface, JsonSerializable
+interface RequestStructureInterface extends ArrayableInterface, JsonSerializable, ArrayAccess, Iterator
 {
     /**
      * Retrieves a list of all of the accepted parameters for the model

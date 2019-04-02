@@ -108,3 +108,21 @@ function testCreateCard()
     $card = testCreditCard();
     return $gate->createCard()->setCard($card);
 }
+
+function testTransactionRbits()
+{
+    $rbit = RequestStructureFactory::create('Rbit');
+    $rbit->type = "auto_billing";
+    $rbit->receive_time = time();
+    $rbit->source = "user";
+
+    $auto_billing = RequestStructureFactory::create('RbitAutoBilling');
+    $auto_billing->autobill_setup_time = $rbit->receive_time;
+    $auto_billing->payment_number = 1;
+    $auto_billing->payment_frequency = "monthly";
+    $auto_billing->setup_by = "payer";
+
+    $rbit->properties = $auto_billing;
+
+    return $rbit;
+}

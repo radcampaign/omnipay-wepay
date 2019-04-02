@@ -63,6 +63,25 @@ class Rbit extends AbstractRequestStructure
     }
 
     /**
+     * Sets the Properties. Properties must implement the RbitPropertiesInterface
+     * Interface
+     *
+     * @param RbitPropertiesInterface|array $value
+     */
+    public function setProperties($value)
+    {
+        if (!($value instanceof RbitPropertiesInterface) && $this->hasParameter('type')) {
+            try {
+                $value = RequestStructureFactory::rbitCreate($this->getType(), $value);
+            } catch (\InvalidArgumentException $exception) {
+                // silence - lets just let thr properties go
+            }
+        }
+
+        return $this->setParameter('properties', $value);
+    }
+
+    /**
      * Determines how the class should be rendered as an array
      *
      * @see Omnipay\WePay\Utilities\ArrayableInterface

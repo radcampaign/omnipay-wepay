@@ -94,7 +94,9 @@ class Purchase extends AbstractRequest
             'callback_uri'      => $this->getCallbackUri(),
             'initiated_by'      => $this->getInitiatedBy(),
             'auto_release'      => $this->getAutoRelease(),
-            'delivery_type'     => $this->getDeliveryType()
+            'delivery_type'     => $this->getDeliveryType(),
+            'transaction_rbits' => $this->getTransactionRbits(),
+            'payer_rbits'       => $this->getPayerRbits(),
         ];
 
         if ($this->isHostedCheckout()) {

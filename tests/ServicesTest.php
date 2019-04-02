@@ -10,7 +10,7 @@ use Omnipay\WePay\Models\RequestStructures\Address;
 
 class ServicesTest extends TestCase
 {
-    public function testAddressRequestStructureConformer()
+    public function testAddressFromCardMutator()
     {
         // get a faker
         $faker = FakerFactory::create('credit_card');
@@ -21,8 +21,8 @@ class ServicesTest extends TestCase
 
         // get our service
         $service = Services::get('rs_cc')
-                    ->setCreditCard($card)
-                    ->setRSTAg('address');
+                    ->setMutatorTAg('addressFromCard')
+                    ->setCreditCard($card);
 
         // retrieve our new RS address
         $address = $service->invoke();

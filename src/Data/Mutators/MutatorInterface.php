@@ -14,13 +14,13 @@ interface MutatorInterface
     public function setCard(CreditCard $card);
 
     /**
-     * Conforms the credit card object into one of our
+     * Mutates the credit card object into one of our
      * request structures by retrieving from our
      * credit card object the relevant data for our request structure.
      *
      * @return Omnipay\WePay\Models\RequestStructures\RequestStructureInterface
      */
-    public function conform();
+    public function mutate();
 
     /**
      * Used to retrieve that tag for the structure that is resolvable
